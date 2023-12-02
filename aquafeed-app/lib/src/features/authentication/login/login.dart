@@ -1,5 +1,6 @@
 import 'package:aquafeed_app/src/constants/colors.dart';
 import 'package:aquafeed_app/src/features/authentication/register/register.dart';
+import 'package:aquafeed_app/src/features/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:aquafeed_app/src/components/widgets/textfield_widget.dart';
 import 'package:aquafeed_app/src/components/widgets/button_widget.dart';
@@ -18,7 +19,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -77,7 +78,10 @@ class Login extends StatelessWidget {
 
               // sign in button
               Button(
-                onTap: signUserIn,
+                onTap: () {
+                  // Navigate to the desired page
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                },
                 text: 'Login',
               ),
 
