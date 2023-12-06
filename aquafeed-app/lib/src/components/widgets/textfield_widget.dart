@@ -10,25 +10,22 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
-      child: TextField(
-        controller: controller,
-        obscureText: obscureText,
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFFB9C0C9)),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: primaryColor),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          filled: true,
-          fillColor:  Colors.grey.shade100,
-          hintText: hintText,
-          hintStyle: const TextStyle(color: Color(0xFFB9C0C9)),
+    return TextField(
+      controller: controller,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color(0xFFB9C0C9)),
+          borderRadius: BorderRadius.circular(10.0),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: primaryColor),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        filled: true,
+        fillColor:  Colors.grey.shade100,
+        hintText: hintText,
+        hintStyle: const TextStyle(color: Color(0xFFB9C0C9)),
       ),
     );
   }
