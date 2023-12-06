@@ -19,7 +19,8 @@ class Register extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -28,9 +29,9 @@ class Register extends StatelessWidget {
                   'assets/aquafeed_logo.png',
                   height: 150,
                 ),
-
+          
                 const SizedBox(height: 30),
-
+          
                 // Welcome sentence
                 const Text(
                   'Create your account and get started!',
@@ -39,44 +40,44 @@ class Register extends StatelessWidget {
                     fontSize: 17,
                   ),
                 ),
-
+          
                 const SizedBox(height: 25),
-
+          
                 // Email textfield
                 TextFieldWidget(
                   controller: emailController, 
                   hintText: 'Enter Email', 
                   obscureText: false,
                 ),
-
+          
                 const SizedBox(height: 10),
-
+          
                 // Password textfield
                 TextFieldWidget(
                   controller: passwordController, 
                   hintText: 'Enter Password', 
                   obscureText: true,
                 ),
-
+          
                 const SizedBox(height: 10),
-
+          
                 // Firstname textfield
                 TextFieldWidget(
                   controller: fullNameController,
                   hintText: 'Enter Full Name',
                   obscureText: false,
                 ),
-
+          
                 const SizedBox(height: 25),
-
+          
                 // register button
                 Button(
                   onTap: registerUser, 
                   text: 'Register',
                 ),
-
+          
                 const SizedBox(height: 50),
-
+          
                 // Already have an account? Login
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -88,9 +89,9 @@ class Register extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
+          
                     SizedBox(width: 4),
-
+          
                     GestureDetector(
                       onTap: () {
                         // Navigate to the desired page
