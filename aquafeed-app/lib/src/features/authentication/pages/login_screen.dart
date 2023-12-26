@@ -1,9 +1,10 @@
-import 'package:aquafeed_app/src/constants/colors.dart';
-import 'package:aquafeed_app/src/features/authentication/register/register.dart';
-import 'package:aquafeed_app/src/features/home/home.dart';
+import 'package:aquafeed_app/src/utils/constants/colors.dart';
+import 'package:aquafeed_app/src/features/authentication/pages/register_screen.dart';
+import 'package:aquafeed_app/src/features/home/pages/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:aquafeed_app/src/components/widgets/textfield_widget.dart';
-import 'package:aquafeed_app/src/components/widgets/button_widget.dart';
+import 'package:aquafeed_app/src/utils/components/textfield_widget.dart';
+import 'package:aquafeed_app/src/utils/components/button_widget.dart';
+import 'package:aquafeed_app/src/utils/validators/validation.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -49,21 +50,23 @@ class Login extends StatelessWidget {
                   controller: emailController,
                   hintText: 'Enter Email',
                   obscureText: false,
+                  validator: (value) => Validations.validateEmptyText('Email', value),
                 ),
           
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
           
                 // Password textfield
                 TextFieldWidget(
                   controller: passwordController, 
                   hintText: 'Enter Password', 
                   obscureText: true,
+                  validator: (value) => Validations.validateEmptyText('Password', value),
                 ),
           
                 const SizedBox(height: 10),
           
                 // Forgot password
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
@@ -77,9 +80,9 @@ class Login extends StatelessWidget {
           
                 // sign in button
                 Button(
-                  onTap: () {
+                  onPressed: () {
                     // Navigate to the desired page
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
                   },
                   text: 'Login',
                 ),
@@ -87,7 +90,7 @@ class Login extends StatelessWidget {
                 const SizedBox(height: 50),
           
                 // or continue with
-                Row(
+                const Row(
                   children: [
                     Expanded(
                       child: Divider(
@@ -132,7 +135,7 @@ class Login extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Don\'t have account?',
                       style: TextStyle(
                         color: textColor2,
@@ -140,14 +143,14 @@ class Login extends StatelessWidget {
                       ),
                     ),
           
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
           
                     GestureDetector(
                       onTap: () {
                         // Navigate to the desired page
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Register()));
                       },
-                      child: Text(
+                      child: const Text(
                         'Register now',
                         style: TextStyle(
                           color: primaryColor,
