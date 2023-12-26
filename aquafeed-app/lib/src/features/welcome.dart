@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'authentication/login/login.dart';
-import 'package:aquafeed_app/src/constants/colors.dart';
+import 'authentication/pages/login_screen.dart';
+import 'package:aquafeed_app/src/utils/constants/colors.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
