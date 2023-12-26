@@ -14,14 +14,12 @@ class RegisterController extends GetxController {
   final password = TextEditingController(); // controller for password input
   final fullname = TextEditingController(); // controller for fullname input
 
-  GlobalKey<FormState> registerFormKey =
-      GlobalKey<FormState>(); // form key for form validation
+  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>(); // form key for form validation
 
-  void registerUser() async {
+  void registerController() async {
     try {
       // Check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
-
       if (!isConnected) {
         return;
       }
@@ -32,8 +30,7 @@ class RegisterController extends GetxController {
       }
 
       // Register user into Firebase Authentication
-      final userCredential = await AuthenticationRepository.instance
-        .createUserWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance.createUserWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       // Save authenticated data into firestore
       final newUser = UserModel(

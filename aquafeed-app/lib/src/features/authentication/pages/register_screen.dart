@@ -78,7 +78,7 @@ class Register extends StatelessWidget {
             
                   // register button
                   Button(
-                    onPressed: () => controller.registerUser(),
+                    onPressed: () => controller.registerController(),
                     text: 'Register',
                   ),
             
