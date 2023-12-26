@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "363211567116",
+    "project_id": "aquafeed-753eb",
+    "storage_bucket": "aquafeed-753eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363211567116:android:621823a7a21489b565be29",
+        "android_client_info": {
+          "package_name": "com.example.aquafeed_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGBFgRqgLZIYOEUPdjs-uU_3AavTYlOow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
