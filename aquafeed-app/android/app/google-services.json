@@ -12,7 +12,20 @@
           "package_name": "com.example.aquafeed_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "363211567116-7f9i13vj2lflipk1sckm41ot73rbdk49.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aquafeed_app",
+            "certificate_hash": "372c621ea32634fffe72a8c907da649130a35337"
+          }
+        },
+        {
+          "client_id": "363211567116-a4he38d17jsi1mlpao4mti3s676jpils.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAGBFgRqgLZIYOEUPdjs-uU_3AavTYlOow"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363211567116-a4he38d17jsi1mlpao4mti3s676jpils.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
