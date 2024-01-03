@@ -1,6 +1,6 @@
 import 'package:aquafeed_app/src/data/repositories/authentication/authentication_repository.dart';
 import 'package:aquafeed_app/src/data/repositories/user/user_repository.dart';
-import 'package:aquafeed_app/src/features/authentication/models/user_model.dart';
+import 'package:aquafeed_app/src/features/core/models/user_model.dart';
 import 'package:aquafeed_app/src/utils/helpers/network_manager.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';

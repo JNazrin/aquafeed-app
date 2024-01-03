@@ -1,4 +1,5 @@
 import 'package:aquafeed_app/src/data/repositories/authentication/authentication_repository.dart';
+import 'package:aquafeed_app/src/features/core/controllers/user_controller.dart';
 import 'package:aquafeed_app/src/utils/components/snackbar_widget.dart';
 import 'package:aquafeed_app/src/utils/helpers/network_manager.dart';
 import 'package:get/get.dart';
@@ -8,9 +9,11 @@ class LoginController extends GetxController {
   // Variables
   final email = TextEditingController();
   final password = TextEditingController();
+  final userController = Get.put(UserController());
 
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
+  // Login with email and password
   void loginController() async {
     try {
       // Check internet connection
@@ -30,6 +33,29 @@ class LoginController extends GetxController {
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      SnackbarWidget.errorSnackBar(title: 'Error!', message: e.toString());
+    }
+  }
+
+  // Login with Google account
+  void googleSignIn() async {
+    try {
+      // Check internet connection
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        return;
+      }
+
+      // Google authentication
+      final userCredential = await AuthenticationRepository.instance.signInWithGoogle();
+
+      // Save user record
+      await userController.saveUserRecord(userCredential);
+
+      // Redirect
+      AuthenticationRepository.instance.screenRedirect();
+
     } catch (e) {
       SnackbarWidget.errorSnackBar(title: 'Error!', message: e.toString());
     }

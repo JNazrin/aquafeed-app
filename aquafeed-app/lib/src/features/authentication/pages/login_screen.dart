@@ -119,14 +119,17 @@ class Login extends StatelessWidget {
                   const SizedBox(height: 50),
 
                   // Google sign in button
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/google.png',
-                        height: 50,
-                      ),
-                    ],
+                  IconButton(
+                    onPressed: () => controller.googleSignIn(),
+                    icon: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/google.png',
+                          height: 50,
+                        ),
+                      ],
+                    ),
                   ),
 
                   const SizedBox(height: 50),
