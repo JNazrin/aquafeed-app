@@ -18,11 +18,11 @@ class EditProfile extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: whiteColor,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.arrow_back_ios),
-          color: primaryColor,
-        ),
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.arrow_back_ios),
+        //   color: primaryColor,
+        // ),
         title: const Text(
           'Edit profile',
           style: TextStyle(
