@@ -1,5 +1,5 @@
 import 'package:aquafeed_app/src/bindings/general_bindings.dart';
-import 'package:aquafeed_app/src/features/welcome.dart';
+import 'package:aquafeed_app/src/features/core/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:aquafeed_app/src/utils/constants/colors.dart';
 import 'package:get/get.dart';
