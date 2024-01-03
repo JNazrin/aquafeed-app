@@ -1,9 +1,11 @@
 import 'package:aquafeed_app/src/features/authentication/pages/login_screen.dart';
 import 'package:aquafeed_app/src/features/home/pages/home_screen.dart';
-import 'package:aquafeed_app/src/features/welcome.dart';
+import 'package:aquafeed_app/src/features/core/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:aquafeed_app/src/data/repositories/exceptions/firebase_auth_exception.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -55,12 +57,34 @@ class AuthenticationRepository extends GetxController {
   /* --------------- Google SignIn --------------- */
 
   // Google Authentication
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      // Get the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+
+      // Create new credential
+      final credentials = GoogleAuthProvider.credential(accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+      // Once sign in, return a user credential
+      return await _auth.signInWithCredential(credentials);
+
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } catch (e) {
+      if (kDebugMode) print('Something went wrong: $e');
+      return null;
+    }
+  }
 
   /* --------------- Logout --------------- */
 
   // Logout Authentication
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => Login());
     } on FirebaseAuthException catch (e) {

@@ -1,4 +1,4 @@
-import 'package:aquafeed_app/src/features/authentication/models/user_model.dart';
+import 'package:aquafeed_app/src/features/core/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:aquafeed_app/src/data/repositories/exceptions/firebase_auth_exception.dart';
