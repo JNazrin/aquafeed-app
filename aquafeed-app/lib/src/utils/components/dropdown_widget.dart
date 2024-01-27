@@ -18,7 +18,7 @@ class DropDown extends StatelessWidget {
             ),
             color: boxColor,
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: ExpansionTile(
                 textColor: primaryColor,
                 title: Text(textTitle),
@@ -28,7 +28,7 @@ class DropDown extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 20.0),
                     child: Text(
                       subTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: textColor,
                       ),
                     ),

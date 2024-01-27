@@ -1,16 +1,20 @@
+import 'package:aquafeed_app/src/features/history_feeding/controllers/history_controller.dart';
+import 'package:aquafeed_app/src/features/history_feeding/models/history_model.dart';
 import 'package:flutter/material.dart';
 import 'package:aquafeed_app/src/utils/constants/colors.dart';
+import 'package:get/get.dart';
 
-class ScheduleCard extends StatelessWidget {
-  final String label;
-  final String date;
-  final String time;
-  final String typeFeed;
+class HistoryCard extends StatelessWidget {
 
-  const ScheduleCard({super.key, required this.label, required this.date, required this.time, required this.typeFeed});
+  const HistoryCard({super.key, required this.history});
+
+  final HistoryModel history;
 
   @override
   Widget build(BuildContext context) {
+
+    final historyController = Get.put(HistoryController());
+
     return Container(
       padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
@@ -33,25 +37,25 @@ class ScheduleCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // label and date
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  label,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    color: textColor,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-                Text(
-                  date,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    color: primaryColor,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+                // Text(
+                //   'label',
+                //   style: const TextStyle(
+                //     fontSize: 17,
+                //     color: textColor,
+                //     fontWeight: FontWeight.bold
+                //   ),
+                // ),
+                // Text(
+                //   'date',
+                //   style: TextStyle(
+                //     fontSize: 17,
+                //     color: primaryColor,
+                //     fontWeight: FontWeight.bold
+                //   ),
+                // ),
               ],
             ),
 
@@ -63,7 +67,7 @@ class ScheduleCard extends StatelessWidget {
                 const Icon(Icons.access_time),
                 const SizedBox(width: 10),
                 Text(
-                  time,
+                  history.dateFeed,
                   style: const TextStyle(
                     fontSize: 17,
                     color: textColor2,
@@ -81,7 +85,7 @@ class ScheduleCard extends StatelessWidget {
                 const Icon(Icons.ad_units),
                 const SizedBox(width: 10),
                 Text(
-                  typeFeed,
+                  history.timeFeed,
                   style: const TextStyle(
                     fontSize: 17,
                     color: textColor2,
@@ -92,15 +96,18 @@ class ScheduleCard extends StatelessWidget {
             ),
 
             // delete button
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  'Delete',
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.red,
-                    decoration: TextDecoration.underline,
+                GestureDetector(
+                  onTap: () => historyController.deleteHistoryRecord(id: history.id ?? ''),
+                  child: const Text(
+                    'Delete',
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.red,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 )
               ],

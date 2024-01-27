@@ -10,12 +10,12 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
         color: whiteColor,
         borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
-          new BoxShadow(
+        boxShadow: const [
+          BoxShadow(
             color: textColor2,
             blurRadius: 4.0,
             offset: Offset(
@@ -28,16 +28,16 @@ class CardWidget extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(img),
-          Spacer(),
+          const Spacer(),
           Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

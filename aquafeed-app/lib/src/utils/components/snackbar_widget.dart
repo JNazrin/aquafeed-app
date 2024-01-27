@@ -14,7 +14,7 @@ class SnackbarWidget {
       backgroundColor: textColor,
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       borderRadius: 5.0,
     );
   }

@@ -11,12 +11,12 @@ class ProfileDetails extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
             color: textColor, fontSize: 17, fontWeight: FontWeight.bold),
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(
+        style: const TextStyle(
             color: textColor2, fontSize: 17, fontWeight: FontWeight.bold),
       ),
     );
