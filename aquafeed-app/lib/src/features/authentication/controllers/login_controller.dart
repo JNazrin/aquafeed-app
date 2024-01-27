@@ -28,11 +28,15 @@ class LoginController extends GetxController {
       }
 
       // Login user with email and password
-      final userCredential = await AuthenticationRepository.instance
-          .signInWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance.signInWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();
+
+      // Success message
+      SnackbarWidget.successSnackBar(
+          title: 'Congratulations', message: 'You successfully logged in'
+      );
     } catch (e) {
       SnackbarWidget.errorSnackBar(title: 'Error!', message: e.toString());
     }
@@ -55,6 +59,11 @@ class LoginController extends GetxController {
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();
+
+      // Success message
+      SnackbarWidget.successSnackBar(
+          title: 'Congratulations', message: 'You successfully logged in'
+      );
 
     } catch (e) {
       SnackbarWidget.errorSnackBar(title: 'Error!', message: e.toString());

@@ -1,7 +1,6 @@
 import 'package:aquafeed_app/src/features/authentication/controllers/login_controller.dart';
 import 'package:aquafeed_app/src/utils/constants/colors.dart';
 import 'package:aquafeed_app/src/features/authentication/pages/register_screen.dart';
-import 'package:aquafeed_app/src/features/home/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aquafeed_app/src/utils/components/textfield_widget.dart';
 import 'package:aquafeed_app/src/utils/components/button_widget.dart';
@@ -9,10 +8,7 @@ import 'package:aquafeed_app/src/utils/validators/validation.dart';
 import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
-  Login({super.key});
-
-  // sign user in method
-  void signUserIn() {}
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +147,7 @@ class Login extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           // Navigate to the desired page
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Register()));
+                          Get.to(const Register());
                         },
                         child: const Text(
                           'Register now',

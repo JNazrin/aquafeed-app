@@ -42,12 +42,11 @@ class RegisterController extends GetxController {
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
 
+      // Redirect
       AuthenticationRepository.instance.screenRedirect();
 
       // Success message
-      SnackbarWidget.successSnackBar(
-        title: 'Congratulations', message: 'You account has been created!'
-      );
+      SnackbarWidget.successSnackBar(title: 'Congratulations', message: 'You account has been created!');
     } catch (e) {
       // Show some Generic Error to the user
       SnackbarWidget.errorSnackBar(title: 'Error!', message: e.toString());

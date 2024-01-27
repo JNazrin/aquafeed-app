@@ -10,8 +10,6 @@ import 'package:aquafeed_app/src/utils/validators/validation.dart';
 class Register extends StatelessWidget {
   const Register({super.key});
 
-  void registerUser() {}
-
   @override
   Widget build(BuildContext context) {
 
@@ -101,8 +99,7 @@ class Register extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           // Navigate to the desired page
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Login()));
+                          Get.to(const Login());
                         },
                         child: const Text(
                           'Login',
