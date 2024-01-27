@@ -1,3 +1,8 @@
+import 'package:aquafeed_app/src/data/repositories/authentication/authentication_repository.dart';
+import 'package:aquafeed_app/src/features/device/pages/device_screen.dart';
+import 'package:aquafeed_app/src/features/core/controllers/user_controller.dart';
+import 'package:aquafeed_app/src/features/history_feeding/pages/history_screen.dart';
+import 'package:aquafeed_app/src/features/schedule_feeding/pages/schedule_setup_screen.dart';
 import 'package:aquafeed_app/src/utils/components/button_widget.dart';
 import 'package:aquafeed_app/src/utils/constants/colors.dart';
 import 'package:aquafeed_app/src/features/instant_feeding/pages/instant_feeding_screen.dart';
@@ -7,14 +12,16 @@ import 'package:flutter/material.dart';
 import 'package:aquafeed_app/src/utils/components/card_widget.dart';
 import 'package:aquafeed_app/src/features/ph_level/pages/ph_screen.dart';
 import 'package:aquafeed_app/src/features/schedule_feeding/pages/schedule_screen.dart';
+import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var size =
-        MediaQuery.of(context).size; // this is total height of our device
+
+    var size = MediaQuery.of(context).size; // this is total height of our device
+    final controller = Get.put(UserController());
 
     return Scaffold(
       body: Stack(
@@ -22,7 +29,7 @@ class Home extends StatelessWidget {
           Container(
             // height of the container is set to 45%
             height: size.height * .40,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: primaryColor,
             ),
           ),
@@ -32,17 +39,38 @@ class Home extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // title header
-                  Text(
-                    'Good Morning\nJoe',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: whiteColor,
-                      fontSize: 27,
+                  ListTile(
+                    title: const Text(
+                      'Hello,',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: whiteColor,
+                        fontSize: 25,
+                      ),
+                    ),
+                    subtitle: Obx(
+                      () => Text(
+                        controller.user.value.fullname,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: whiteColor,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    trailing: GestureDetector(
+                      onTap: (){
+                        // Navigate to the desired page
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+                      },
+                      child: const CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('assets/avatar.png'),
+                      ),
                     ),
                   ),
 
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
 
                   Expanded(
                     child: GridView.count(
@@ -53,68 +81,85 @@ class Home extends StatelessWidget {
                       children: [
                         // PH card
                         GestureDetector(
-                          child: CardWidget(
+                          child: const CardWidget(
                             img: 'assets/ph_image.png',
                             title: 'pH Level',
                           ),
                           onTap: () {
                             // Navigate to the desired page
                             Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => PH()));
+                              MaterialPageRoute(
+                                  builder: (context) => const PH()
+                              )
+                            );
                           },
                         ),
 
                         // Schedule card
                         GestureDetector(
-                          child: CardWidget(
+                          child: const CardWidget(
                             img: 'assets/schedule_image.png',
-                            title: 'Schedule',
+                            title: 'History',
                           ),
                           onTap: () {
                             // Navigate to the desired page
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Schedule()));
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => const History()
+                              )
+                            );
                           },
                         ),
 
                         // Feed Now card
                         GestureDetector(
-                          child: CardWidget(
+                          child: const CardWidget(
                             img: 'assets/feed.png',
                             title: 'Feed Now',
                           ),
                           onTap: () {
                             // Navigate to the desired page
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => InstantFeeding()));
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => InstantFeeding()
+                              )
+                            );
                           },
                         ),
 
                         // Tips Section card
                         GestureDetector(
-                          child: CardWidget(
+                          child: const CardWidget(
                             img: 'assets/tips_image.png',
                             title: 'Tips Section',
                           ),
                           onTap: () {
                             // Navigate to the desired page
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Tips()));
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Tips()
+                              )
+                            );
                           },
                         ),
                       ],
                     ),
                   ),
+
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 50),
                     child: Button(
-                      onPressed: () {
-                        // Navigate to the desired page
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
-                      }, 
-                      text: 'Profile (temporary)'
+                        onPressed: () {
+                          // Navigate to the desired page
+                          Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (context) => const ScheduleSetup()
+                            )
+                          );
+                        },
+                        text: 'Set Reminders'
                     ),
-                  )
+                  ),
                 ],
               ),
             )
