@@ -59,7 +59,7 @@ class Welcome extends StatelessWidget {
   );
 
   void goLogin(context) => Navigator.of(context).pushReplacement(
-    MaterialPageRoute(builder: (_) => Login()),
+    MaterialPageRoute(builder: (_) => const Login()),
   );
 
   DotsDecorator getDotDecoration() => DotsDecorator(
