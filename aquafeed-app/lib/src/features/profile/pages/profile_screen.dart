@@ -1,3 +1,5 @@
+import 'package:aquafeed_app/src/features/core/controllers/user_controller.dart';
+import 'package:aquafeed_app/src/features/home/pages/home_screen.dart';
 import 'package:aquafeed_app/src/utils/components/button_widget.dart';
 import 'package:aquafeed_app/src/utils/constants/colors.dart';
 import 'package:aquafeed_app/src/features/profile/pages/edit_profile_screen.dart';
@@ -10,10 +12,25 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final userController = UserController.instance;
+
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(
+          color: primaryColor,
+          onPressed: () {
+            // Navigate to the desired page
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+          },
+        ),
+        backgroundColor: whiteColor,
+        elevation: 0,
+      ),
+
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.fromLTRB(25, 30, 25, 0),
+          padding: const EdgeInsets.fromLTRB(25, 10, 25, 0),
           child: Column(
             children: [
               // profile image
@@ -52,18 +69,18 @@ class Profile extends StatelessWidget {
                 ],
               ),
 
-              const Text(
-                'Johan Nazrin',
-                style: TextStyle(
+              Text(
+                userController.user.value.fullname,
+                style: const TextStyle(
                   fontSize: 17,
                   color: primaryColor,
                   fontWeight: FontWeight.bold
                 ),
               ),
 
-              const Text(
-                'johannazrin310@gmail.com',
-                style: TextStyle(
+              Text(
+                userController.user.value.email,
+                style: const TextStyle(
                   fontSize: 17,
                   color: textColor,
                 ),
@@ -72,25 +89,17 @@ class Profile extends StatelessWidget {
               const SizedBox(height: 40),
 
               // profile details
-              const ProfileDetails(
+              ProfileDetails(
                 title: 'Name',
-                subtitle: 'Johan Nazrin',
+                subtitle: userController.user.value.fullname,
               ),
               const Divider(
                 height: 10,
                 thickness: 1,
               ),
-              const ProfileDetails(
+              ProfileDetails(
                 title: 'Email',
-                subtitle: 'johannazrin310@gmail.com',
-              ),
-              const Divider(
-                height: 10,
-                thickness: 1,
-              ),
-              const ProfileDetails(
-                title: 'Phone',
-                subtitle: '017-3857225',
+                subtitle: userController.user.value.email,
               ),
 
               const SizedBox(height: 40),
@@ -99,17 +108,32 @@ class Profile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  // Logout button
+                  InkWell(
+                    onTap: () => AuthenticationRepository.instance.logout(),
+                    child: const Text(
+                      'Logout',
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 40),
+
                   Button(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile()));
                     }, 
                     text: 'Edit'
                   ),
-                  const SizedBox(width: 5),
-                  Button(
-                      onPressed: () => AuthenticationRepository.instance.logout(),
-                      text: 'Logout'
-                  )
+                  // const SizedBox(width: 5),
+                  // Button(
+                  //     onPressed: () => AuthenticationRepository.instance.logout(),
+                  //     text: 'Logout'
+                  // )
                 ],
               ),
             ],

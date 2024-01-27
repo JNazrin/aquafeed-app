@@ -1,3 +1,4 @@
+import 'package:aquafeed_app/src/features/home/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aquafeed_app/src/utils/constants/colors.dart';
 import 'package:aquafeed_app/src/utils/components/dropdown_widget.dart';
@@ -8,10 +9,22 @@ class Tips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      appBar: AppBar(
+        leading: BackButton(
+          color: primaryColor,
+          onPressed: () {
+            // Navigate to the desired page
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+          },
+        ),
+        backgroundColor: whiteColor,
+        elevation: 0,
+      ),
+
+      body: const SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(25, 50, 25, 0),
+            padding: EdgeInsets.fromLTRB(25, 20, 25, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
