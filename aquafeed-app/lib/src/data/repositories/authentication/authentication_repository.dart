@@ -13,6 +13,10 @@ class AuthenticationRepository extends GetxController {
   // Variables
   final _auth = FirebaseAuth.instance;
 
+  // Get Authenticated User data
+  User? get authUser => _auth.currentUser;
+
+  // Called from main.dart on app launch
   @override
   void onReady() {
     screenRedirect();
@@ -86,11 +90,31 @@ class AuthenticationRepository extends GetxController {
     try {
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
-      Get.offAll(() => Login());
+      Get.offAll(() => const Login());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again.';
+    }
+  }
+
+  /* --------------- Arduino --------------- */
+
+  // Function to get userId for current user
+  Future<String?> getUserId() async {
+    try {
+
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        String userId = user.uid;
+        return userId;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Error: $e');
+      return null;
     }
   }
 }
