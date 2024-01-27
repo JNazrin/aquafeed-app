@@ -12,7 +12,7 @@ class ScheduleSetup extends StatefulWidget {
 
 class _ScheduleSetupState extends State<ScheduleSetup> {
   // create timeOfDay variable
-  TimeOfDay _timeOfDay = TimeOfDay(hour: 12, minute: 0);
+  TimeOfDay _timeOfDay = const TimeOfDay(hour: 12, minute: 0);
 
   // create showTimePicker method
   void _showTimePicker() {
@@ -29,16 +29,28 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(
+          color: primaryColor,
+          onPressed: () {
+            // Navigate to the desired page
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
+          },
+        ),
+        backgroundColor: whiteColor,
+        elevation: 0,
+      ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(25, 50, 25, 0),
+            padding: const EdgeInsets.fromLTRB(25, 20, 25, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Title page
-                Text(
-                  'Feeding Schedule',
+                const Text(
+                  'Add Reminders',
                   style: TextStyle(
                     color: primaryColor,
                     fontSize: 27,
@@ -47,7 +59,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                 ),
 
                 // Sub title
-                Text(
+                const Text(
                   'Your Fish\'s Mealtime',
                   style: TextStyle(
                     color: textColor2,
@@ -55,7 +67,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                   ),
                 ),
 
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
 
                 // set timer section
                 Row(
@@ -63,7 +75,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                   children: [
                     Text(
                       _timeOfDay.format(context).toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: textColor,
                         fontSize: 23,
                       ),
@@ -74,7 +86,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                       onTap: () {
                         _showTimePicker();
                       },
-                      child: Text(
+                      child: const Text(
                         '>',
                         style: TextStyle(
                           color: primaryColor,
@@ -86,7 +98,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                   ],
                 ),
 
-                Divider(
+                const Divider(
                   height: 50,
                   thickness: 2,
                 ),
@@ -95,7 +107,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Repeat',
                       style: TextStyle(
                         color: textColor,
@@ -106,7 +118,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                     // button to set repeat
                     GestureDetector(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         'Every Monday >',
                         style: TextStyle(
                           color: primaryColor,
@@ -118,7 +130,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                   ],
                 ),
 
-                Divider(
+                const Divider(
                   height: 50,
                   thickness: 2,
                 ),
@@ -127,7 +139,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Label',
                       style: TextStyle(
                         color: textColor,
@@ -138,7 +150,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                     // button to set repeat
                     GestureDetector(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         'Breakfast >',
                         style: TextStyle(
                           color: primaryColor,
@@ -150,7 +162,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                   ],
                 ),
 
-                Divider(
+                const Divider(
                   height: 50,
                   thickness: 2,
                 ),
@@ -159,7 +171,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Notification',
                       style: TextStyle(
                         color: textColor,
@@ -170,7 +182,7 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                     // button to set repeat
                     GestureDetector(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         'Turn on >',
                         style: TextStyle(
                           color: primaryColor,
@@ -182,12 +194,12 @@ class _ScheduleSetupState extends State<ScheduleSetup> {
                   ],
                 ),
 
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
 
                 // save button
                 Button(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Schedule()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Schedule()));
                   },
                   text: 'Save',
                 )
